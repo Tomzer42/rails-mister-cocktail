@@ -13,6 +13,15 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Mister Cocktail</a>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <%= link_to "Home", cocktails_path, class:"btn btn-primary m-2" %>
+          <%= link_to "Add a cocktail", new_cocktail_path, class:"btn btn-primary m-2" %>
+        </div>
+      </div>
+    </nav>
     <%= yield %>
     <%= javascript_include_tag "application" %> <!-- from app/assets/javascripts/application.js -->
     <%= javascript_pack_tag "application" %>
