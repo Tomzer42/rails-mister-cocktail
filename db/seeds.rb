@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 puts 'Cleaning database...'
+Dose.destroy_all
 Ingredient.destroy_all
 Cocktail.destroy_all
 
@@ -20,6 +21,17 @@ Ingredient.create(name: "bottle")
 Ingredient.create(name: "vodka")
 Ingredient.create(name: "martini")
 
-Cocktail.create(name: "Molotov")
-Cocktail.create(name: "Sex on the beach")
-Cocktail.create(name: "Mojito")
+molotov = Cocktail.new(name: "Molotov")
+file = URI.open("https://source.unsplash.com/1600x900/?cocktail,#{molotov.name}")
+molotov.photo.attach(io: file, filename: 'molotov.jpg', content_type: 'image/png')
+molotov.save
+
+sex_on_the_beach = Cocktail.new(name: "Sex on the beach")
+file = URI.open("https://source.unsplash.com/1600x900/?cocktail,#{sex_on_the_beach.name.gsub(" ", "_")}")
+sex_on_the_beach.photo.attach(io: file, filename: 'sex_on_the_beach.jpg', content_type: 'image/png')
+sex_on_the_beach.save
+
+mojito = Cocktail.new(name: "Mojito")
+file = URI.open("https://source.unsplash.com/1600x900/?cocktail,#{mojito.name}")
+mojito.photo.attach(io: file, filename: 'mojito.jpg', content_type: 'image/png')
+mojito.save

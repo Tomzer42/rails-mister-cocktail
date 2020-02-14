@@ -1,13 +1,14 @@
 
 
 <div class="container">
-  <div class="card-category my-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/1600x900/?cocktail,<%= @cocktail.name.gsub(" ", "_") %>)">
+  <div class="card-category my-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @cocktail.photo %>)">
     <%= @cocktail.name %>
+
   </div>
 
-  <ul class="list-group list-group-flush">
+  <ul>
     <% @cocktail.doses.each do |dose| %>
-    <li class="list-group-item">
+    <li class="list-ingredient">
       <p><%= dose.ingredient.name %> : <%= dose.description %> <%= link_to 'Delete', dose_path(dose), class:"btn btn-danger mx-3", method: :delete, data: { confirm: 'Are you sure?' } %></p>
     </li>
     <% end %>
